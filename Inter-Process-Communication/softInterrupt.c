@@ -45,7 +45,6 @@ int main(){
 }
 
 void stop(int signum){
-    //补充
     wait_flag=0;
     printf("\n %d stop test \n",signum);
 }
