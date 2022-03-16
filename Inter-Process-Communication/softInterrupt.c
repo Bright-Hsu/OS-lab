@@ -4,6 +4,7 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 #include<stdlib.h>
+
 int wait_flag=0;
 void stop(int signum);
 
