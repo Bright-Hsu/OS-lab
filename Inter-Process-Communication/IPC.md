@@ -97,3 +97,41 @@ alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送
 ### 软中断通信
 
 ![image-20220318234302832](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234302832.png)
+
+### 管道通信
+
+![image-20220318234403510](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234403510.png)
+
+## 实验过程
+
+**1.** **先猜想一下这个程序的运行结果。然后按照注释里的要求把代码补充完整，运行程序。或者多次运行，并且****Delete/quit,****键后，会出现什么结果？分析原因。**
+
+补全代码后，先不按quit键运行，发现先输出前两行，五秒之后输出了第三行，输出见下图。这说明子进程1和2很快就被杀死，而父进程五秒后才被杀死。
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+
+在五秒内按下quit键（也就是Ctrl+\），输出如下。可以看到父进程接受到了中断信号3，而子进程都早已经被杀死因此没有收到中断信号，也就没有机会进入到stop函数中。
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+
+但是如果按下中断键（也就是Ctrl+C），会导致父进程被挂起在终端，没有被终止，导致附程序始终在后台运行。输出结果如下：
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png)
+
+原因分析：虽然五秒内按下quit键，父进程接受到了中断信号3，但是此时子进程都已经终止，因此kill函数无法起到作用，所以子进程无法接收到中断信号。
+
+**2.** **如果程序运行，界面上显示“****Child process 1 is killed by parent !! Child process 2 is killed by parent !!****”，五秒之后显示“****Parent process is killed !!****”，怎样修改程序使得只有接收到相应的中断信号后再发生跳转，执行输出。**
+
+修改程序，这里我的两个子进程调用的中断信号为SIGUSR1何SIGUSR2，对应的证书分别是10和12。 接下来我在两个子进程中都使用了 while(wait_flag==1)，可以看到子进程只有接收到相应的中断信号才会发生跳转。
+
+不加中断信号3时，五秒之后，才输出下图：
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png)
+
+在五秒内按下quit，输出如下，可以看到父进程、子进程1、子进程2这三个进程全部都收到了中断信号3，并且都执行调用了stop函数。
+
+![文本  描述已自动生成](https://gitee.com/bright_xu/blog-image/raw/master/img/clip_image010.jpg)
+
+**3.** **将本实验中通信产生的中断通过****14** **号信号值进行闹钟中断，将****signal(3,stop)****当中数字信号变为****2****，体会不同中断的执行样式，从而对软中断机制有一个更好的理解。**
+
+将通信产生的中断通过14 号信号值进行闹钟中断，将signal(3,stop)当中数字信号变为2，改完程序之后，运行程序，五秒后看到输出如下：
