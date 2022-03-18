@@ -130,8 +130,10 @@ alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送
 
 在五秒内按下quit，输出如下，可以看到父进程、子进程1、子进程2这三个进程全部都收到了中断信号3，并且都执行调用了stop函数。
 
-![文本  描述已自动生成](https://gitee.com/bright_xu/blog-image/raw/master/img/clip_image010.jpg)
+![image-20220318234713516](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234713516.png)
 
 **3.** **将本实验中通信产生的中断通过****14** **号信号值进行闹钟中断，将****signal(3,stop)****当中数字信号变为****2****，体会不同中断的执行样式，从而对软中断机制有一个更好的理解。**
 
 将通信产生的中断通过14 号信号值进行闹钟中断，将signal(3,stop)当中数字信号变为2，改完程序之后，运行程序，五秒后看到输出如下：
+
+![image-20220318234723952](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234723952.png)
