@@ -50,7 +50,7 @@ Parent process is killed!!
 
   （3）function为非0，非1类整数时，function的值即作为信号处理程序的指针。
 
-**4****、****wait()****和****waitpid()**
+**4、wait()和waitpid()**
 
 wait（）会暂时停止进程的执行，直到有信号来到或子进程结束。
 
