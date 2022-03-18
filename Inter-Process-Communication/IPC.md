@@ -60,7 +60,7 @@ pid：pid>0时，只等待进程ID等于pid的子进程，不管子进程。pid=
 
 options提供了一些额外的选项来控制waitpid，目前在Linux中只支持WNOHANG和WUNTRACED两个选项，这是两个常数，可以用"|"运算符把它们连接起来使用，比如：ret=waitpid(-1,NULL,WNOHANG | WUNTRACED)。如果我们不想使用它们，也可以把options设为0。
 
-**5****、****sleep()****和****pause()**
+**5、sleep()和pause()**
 
 sleep(n)进程暂停n秒，ctrl+c即SIGINT信号可以使sleep提前结束，继续运行。
 
