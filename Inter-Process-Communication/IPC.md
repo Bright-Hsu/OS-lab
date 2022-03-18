@@ -108,15 +108,15 @@ alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送
 
 补全代码后，先不按quit键运行，发现先输出前两行，五秒之后输出了第三行，输出见下图。这说明子进程1和2很快就被杀死，而父进程五秒后才被杀死。
 
-![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+![image-20220318234548767](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234548767.png)
 
 在五秒内按下quit键（也就是Ctrl+\），输出如下。可以看到父进程接受到了中断信号3，而子进程都早已经被杀死因此没有收到中断信号，也就没有机会进入到stop函数中。
 
-![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+![image-20220318234609663](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234609663.png)
 
 但是如果按下中断键（也就是Ctrl+C），会导致父进程被挂起在终端，没有被终止，导致附程序始终在后台运行。输出结果如下：
 
-![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png)
+![image-20220318234632856](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234632856.png)
 
 原因分析：虽然五秒内按下quit键，父进程接受到了中断信号3，但是此时子进程都已经终止，因此kill函数无法起到作用，所以子进程无法接收到中断信号。
 
@@ -126,7 +126,7 @@ alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送
 
 不加中断信号3时，五秒之后，才输出下图：
 
-![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png)
+![image-20220318234649888](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234649888.png)
 
 在五秒内按下quit，输出如下，可以看到父进程、子进程1、子进程2这三个进程全部都收到了中断信号3，并且都执行调用了stop函数。
 
