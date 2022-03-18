@@ -92,3 +92,8 @@ alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送
 
 其中的参数fd用于描述管道的两端，其中fd[0]是读端，fd[1]是写端。两个进程分别使用读端和写端，就可以进行通信了。
 
+## 流程图
+
+### 软中断通信
+
+![image-20220318234302832](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220318234302832.png)
