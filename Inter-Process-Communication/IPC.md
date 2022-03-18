@@ -40,7 +40,9 @@ Parent process is killed!!
 
 （3）pid=-1时，核心将信号发送给所有用户标识符真正等于发送进程的有效用户标识号的进程。
 
-**3****、****signal(sig,function)****如果接收到中断信号就作相应处理**
+**3、signal(sig,function)**
+
+如果接收到中断信号就作相应处理
 
 其中sig用于指定信号的类型，sig为0则表示没有收到任何信号。function：在该进程中的一个函数地址
 
