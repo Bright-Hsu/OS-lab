@@ -30,7 +30,7 @@ Parent process is killed!!
 
 ### 软中断通信
 
-**1****、****lockf(fd, function, size)****用于进程互斥**
+**1、lockf(fd, function, size)用于进程互斥**
 
 **2、int kill(pid, sig)传递中断信号**
 
