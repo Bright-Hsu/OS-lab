@@ -66,7 +66,7 @@ sleep(n)进程暂停n秒，ctrl+c即SIGINT信号可以使sleep提前结束，继
 
 pause()会令目前的进程暂停(进入睡眠状态), 直到被信号(signal)所中断.。
 
-**6****、****alarm()**
+**6**、alarm()
 
 alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送给目前的进程. 如果参数seconds 为0, 则之前设置的闹钟会被取消, 并将剩下的时间返回。
 
