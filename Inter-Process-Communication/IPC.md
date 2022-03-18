@@ -32,7 +32,7 @@ Parent process is killed!!
 
 **1****、****lockf(fd, function, size)****用于进程互斥**
 
-**2****、****int kill(pid, sig)****传递中断信号**
+**2、int kill(pid, sig)传递中断信号**
 
 （1）pid>0时，核心将信号发送给进程pid。
 
