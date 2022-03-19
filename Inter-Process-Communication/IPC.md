@@ -120,7 +120,7 @@ alarm()用来设置信号SIGALRM 在经过参数seconds 指定的秒数后传送
 
 原因分析：虽然五秒内按下quit键，父进程接受到了中断信号3，但是此时子进程都已经终止，因此kill函数无法起到作用，所以子进程无法接收到中断信号。
 
-**2.** **如果程序运行，界面上显示“****Child process 1 is killed by parent !! Child process 2 is killed by parent !!****”，五秒之后显示“****Parent process is killed !!****”，怎样修改程序使得只有接收到相应的中断信号后再发生跳转，执行输出。**
+**2.** **如果程序运行，界面上显示“*****Child process 1 is killed by parent !! Child process 2 is killed by parent !!”，五秒之后显示“Parent process is killed !!”，怎样修改程序使得只有接收到相应的中断信号后再发生跳转，执行输出。****
 
 修改程序，这里我的两个子进程调用的中断信号为SIGUSR1何SIGUSR2，对应的证书分别是10和12。 接下来我在两个子进程中都使用了 while(wait_flag==1)，可以看到子进程只有接收到相应的中断信号才会发生跳转。
 
