@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<sys/wait.h>
 int pid1,pid2;
+
 int main(){
     int fd[2];
     char InPipe[1000];
