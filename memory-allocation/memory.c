@@ -383,7 +383,6 @@ int free_mem(struct allocated_block* ab) {
     if (!fbt) {
         return -1;
     }
-    //补充
     // 进行可能的合并，基本策略如下
     // 1. 将新释放的结点插入到空闲分区队列末尾
     // 2. 对空闲链表按照地址有序排列
