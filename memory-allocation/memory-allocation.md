@@ -78,3 +78,21 @@
 
 ## 程序测试
 
+先给程序设置内存大小为1024：
+
+![文本  描述已自动生成](https://gitee.com/bright_xu/blog-image/raw/master/img/clip_image001.png)
+
+然后设置算法为1——首次适应算法：
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png)
+
+然后按顺序分配了四个进程，可以看到程序可以解决内碎片问题，如下图：
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image005.png)
+
+杀死进程1和3，可以看到空闲块如下：
+
+![文本  描述已自动生成](C:/Users/DELL/AppData/Local/Temp/msohtmlclip1/01/clip_image007.png)
+
+为了检查程序是否能解决外碎片问题，也就是内存紧缩功能，现在分配一个大小为350的进程，查看它是否会进行内存紧缩。可以看到程序对内存进行了重新整合，也就是使用了内存紧缩技术。如下图：
+
