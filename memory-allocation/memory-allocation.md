@@ -98,3 +98,4 @@
 
 ![image-20220321201141214](https://gitee.com/bright_xu/blog-image/raw/master/img/image-20220321201141214.png)
 
+经过本例的检查，可以看到所有功能都可以正常运行，程序正确。
