@@ -64,7 +64,6 @@ int main() {
     while (1) {
         display_menu();
         //fflush(stdin);
-        //choice = getchar();
         scanf("%s", &choice);
         switch (choice)
         {
