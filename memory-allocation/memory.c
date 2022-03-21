@@ -263,7 +263,6 @@ int allocate_mem(struct allocated_block* ab) {
     int request_size = ab->size;
     rearrange(ma_algorithm);
     fbt = pre = free_block;
-    //补充 
     if (free_block == NULL) {
         return -1;
     }
